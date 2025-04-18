@@ -29,7 +29,7 @@ class Student:
 
 
         # First image
-        img = Image.open("F:/B.E/FACE_RECOGNITION_SYSTEM/photo/istockphoto-1430114131-612x612.jpg")
+        img = Image.open("photo/istockphoto-1430114131-612x612.jpg")
         img = img.resize((500, 130), Image.Resampling.LANCZOS)
         self.photoimg1 = ImageTk.PhotoImage(img)
 
@@ -38,7 +38,7 @@ class Student:
 
 
         # Second image
-        img1 = Image.open("F:/B.E/FACE_RECOGNITION_SYSTEM/photo/istockphoto-1307457391-612x612.jpg")
+        img1 = Image.open("photo/istockphoto-1307457391-612x612.jpg")
         img1 = img1.resize((500, 130), Image.Resampling.LANCZOS)
         self.photoimg2 = ImageTk.PhotoImage(img1)
 
@@ -47,7 +47,7 @@ class Student:
 
 
         # Third image
-        img2 = Image.open("F:/B.E/FACE_RECOGNITION_SYSTEM/photo/pexels-hillaryfox-1595391.jpg")
+        img2 = Image.open("photo/pexels-hillaryfox-1595391.jpg")
         img2 = img2.resize((500, 130), Image.Resampling.LANCZOS)
         self.photoimg3 = ImageTk.PhotoImage(img2)
         
@@ -56,7 +56,7 @@ class Student:
 
         
         # Background image
-        img3 = Image.open("F:/B.E/FACE_RECOGNITION_SYSTEM/photo/GettyImages-1072191138.jpg")
+        img3 = Image.open("photo/GettyImages-1072191138.jpg")
         img3 = img3.resize((1530, 710), Image.Resampling.LANCZOS)
         self.photoimg4 = ImageTk.PhotoImage(img3)
 
@@ -76,7 +76,7 @@ class Student:
         left_frame.place(x=10, y=10, width=730, height=580)
 
         # Left frame image
-        img_left = Image.open("F:/B.E/FACE_RECOGNITION_SYSTEM/photo/GettyImages-1072191138.jpg")
+        img_left = Image.open("photo/GettyImages-1072191138.jpg")
         img_left = img_left.resize((720, 130), Image.Resampling.LANCZOS)
         self.photoimg_left = ImageTk.PhotoImage(img_left)
 
@@ -245,7 +245,7 @@ class Student:
         right_frame.place(x=750, y=10, width=730, height=580)
 
         # Right frame image
-        img_right = Image.open("F:/B.E/FACE_RECOGNITION_SYSTEM/photo/istockphoto-1307457391-612x612.jpg")
+        img_right = Image.open("photo/istockphoto-1307457391-612x612.jpg")
         img_right = img_right.resize((720, 130), Image.Resampling.LANCZOS)
         self.photoimg_right = ImageTk.PhotoImage(img_right)
 
