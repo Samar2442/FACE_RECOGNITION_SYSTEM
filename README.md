@@ -1,2 +1,2 @@
-# Face_Recognition_Attendance
+# Face_Recognition_Attendance_System_Software
 Hackhazards project.
