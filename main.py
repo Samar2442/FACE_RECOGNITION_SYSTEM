@@ -123,10 +123,10 @@ class Face_Recognition_System:
         img10 = img10.resize((220, 220), Image.Resampling.LANCZOS)
         self.photoimg11 = ImageTk.PhotoImage(img10)
 
-        b1 = Button(bg_img, image=self.photoimg11, cursor="hand2",command=self.train_data)
+        b1 = Button(bg_img, image=self.photoimg11, cursor="hand2",command=self.developer_data)
         b1.place(x=800, y=380, width=220, height=220)
 
-        b1_1 = Button(bg_img, text="Developer", cursor="hand2",command=self.train_data, font=("times new roman", 15, "bold"), bg="black", fg="white")
+        b1_1 = Button(bg_img, text="Developer", cursor="hand2",command=self.developer_data, font=("times new roman", 15, "bold"), bg="black", fg="white")
         b1_1.place(x=800, y=580, width=220, height=40)
 
         # exit button
@@ -162,4 +162,3 @@ if __name__ == "__main__":
     root = Tk()
     app = Face_Recognition_System(root)
     root.mainloop()
-
