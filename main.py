@@ -9,8 +9,10 @@ from Developer import Developer
 from time import strftime
 from datetime import datetime
 from Train import Train
-from Help import Help
+from chatbot import Chatbot
+from Attendance import Attendance
 import os
+from face_recognition import Face_recognition
 
 class Face_Recognition_System:
     def __init__(self, root):
@@ -82,10 +84,10 @@ class Face_Recognition_System:
         img5 = img5.resize((220, 220), Image.Resampling.LANCZOS)
         self.photoimg6 = ImageTk.PhotoImage(img5)
 
-        b1 = Button(bg_img, image=self.photoimg6, cursor="hand2")
+        b1 = Button(bg_img, image=self.photoimg6, cursor="hand2", command=self.face_data)
         b1.place(x=500, y=100, width=220, height=220)
 
-        b1_1 = Button(bg_img, text="Face Detector", cursor="hand2", font=("times new roman", 15, "bold"), bg="black", fg="white")
+        b1_1 = Button(bg_img, text="Face Detector", cursor="hand2", font=("times new roman", 15, "bold"), bg="black", fg="white", command=self.face_data)
         b1_1.place(x=500, y=300, width=220, height=40)
         
         # attendance button
@@ -93,21 +95,21 @@ class Face_Recognition_System:
         img6 = img6.resize((220, 220), Image.Resampling.LANCZOS)
         self.photoimg7 = ImageTk.PhotoImage(img6)
         
-        b1 = Button(bg_img, image=self.photoimg7, cursor="hand2")
+        b1 = Button(bg_img, image=self.photoimg7, cursor="hand2", command=self.attendance_data)
         b1.place(x=800, y=100, width=220, height=220)
 
-        b1_1 = Button(bg_img, text="Attendance", cursor="hand2", font=("times new roman", 15, "bold"), bg="black", fg="white")
+        b1_1 = Button(bg_img, text="Attendance", cursor="hand2", font=("times new roman", 15, "bold"), bg="black", fg="white", command=self.attendance_data)
         b1_1.place(x=800, y=300, width=220, height=40)
 
-        # help button
+        # chat box button
         img7 = Image.open(r"photo/man-working-call-center-office.jpg")
         img7 = img7.resize((220, 220), Image.Resampling.LANCZOS)
         self.photoimg8 = ImageTk.PhotoImage(img7)
 
-        b1 = Button(bg_img, image=self.photoimg8, cursor="hand2",command=self.help)
+        b1 = Button(bg_img, image=self.photoimg8, cursor="hand2",command=self.chatbot)
         b1.place(x=1100, y=100, width=220, height=220)
 
-        b1_1 = Button(bg_img, text="Help Desk", cursor="hand2",command=self.help, font=("times new roman", 15, "bold"), bg="black", fg="white")
+        b1_1 = Button(bg_img, text="Chat Box", cursor="hand2",command=self.chatbot, font=("times new roman", 15, "bold"), bg="black", fg="white")
         b1_1.place(x=1100, y=300, width=220, height=40)
 
         # train button
@@ -177,9 +179,17 @@ class Face_Recognition_System:
         self.new_window=Toplevel(self.root)
         self.app=Train(self.new_window)
 
-    def help(self):
+    def chatbot(self):
         self.new_window=Toplevel(self.root)
-        self.app=Help(self.new_window)
+        self.app=Chatbot(self.new_window)
+    
+    def face_data(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Face_recognition(self.new_window)
+    
+    def attendance_data(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Attendance(self.new_window)
 
 
 

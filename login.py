@@ -120,4 +120,3 @@ class Login_Window:
 if __name__ == "__main__":
     root = Tk()
     app = Login_Window(root)
-    root.mainloop()
