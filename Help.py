@@ -6,8 +6,6 @@ from PIL import Image, ImageTk
 from tkinter import Label,Frame,Button,Toplevel
 from student import Student
 from Developer import Developer
-from time import strftime
-from datetime import datetime
 from Train import Train
 from Help import Help
 import os
@@ -54,17 +52,9 @@ class Face_Recognition_System:
         bg_img.place(x=0, y=130, width=1530, height=710)
        
         # Title label       
-        title_lbl = Label(bg_img, text="FACE  RECOGNITION  ATTENDANCE  SYSTEM  SOFTWARE", font=("times new roman", 30, "bold"), bg="lavender", fg="blue")
+        title_lbl = Label(bg_img, text="FACE  RECOGNITION  ATTENDANCE  SYSTEM  SOFTWARE", font=("times new roman", 30, "bold"), bg="white", fg="blue")
         title_lbl.place(x=0, y=0, width=1530, height=45)
-
-        #time
-        def time():
-            string = strftime('%H:%M:%S %p')
-            lbl.config(text=string)
-            lbl.after(1000,time)
-        lbl=Label(title_lbl,font=("times new roman", 14, "bold"),background='lavender',foreground='blue')
-        lbl.place(x=0,y=0,width=110,height=50)
-        time()
+        
 
         # student button
         img4 = Image.open(r"photo/group-young-students-front-school-building.jpg")
@@ -187,5 +177,3 @@ if __name__ == "__main__":
     root = Tk()
     app = Face_Recognition_System(root)
     root.mainloop()
-
-
