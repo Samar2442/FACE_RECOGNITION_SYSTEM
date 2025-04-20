@@ -63,7 +63,7 @@ class Developer:
         dev2_frame = Frame(background_label, bd=2, bg="lavender")
         dev2_frame.place(x=395, y=110, width=350, height=500)
 
-        dev2_image = Image.open(r"photo\Somoresh.jpg")
+        dev2_image = Image.open(r"photo\Samaresh.jpg")
         dev2_image = dev2_image.resize((350, 250), Image.LANCZOS)
         self.photo_dev2 = ImageTk.PhotoImage(dev2_image)
 
