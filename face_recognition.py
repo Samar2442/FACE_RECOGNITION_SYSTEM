@@ -8,6 +8,11 @@ import numpy as np
 import mysql.connector
 from time import strftime
 from datetime import datetime
+import logging
+import os
+import sys
+from language import set_language, get_text  # Import language functions
+
 
 
 class Face_recognition:
@@ -17,15 +22,27 @@ class Face_recognition:
         self.root.geometry("1530x790+0+0")
 
         # Title label
-        title_lbl = Label(self.root, text="FACE RECOGNITION", font=("times new roman", 30, "bold"), bg="white", fg="blue")
-        title_lbl.place(x=0, y=0, width=1530, height=45)
+        self.title_lbl = Label(self.root, text=get_text('face_recognition'), font=("times new roman", 30, "bold"), bg="grey", fg="blue")
+        self.title_lbl.place(x=0, y=0, width=1530, height=100)
+
+        # Home button
+        img = Image.open(r"photo/beautiful-home_24877-50819.jpg")
+        img = img.resize((70, 70), Image.Resampling.LANCZOS)
+        self.photoimg = ImageTk.PhotoImage(img)
+
+        b1 = Button(self.title_lbl, image=self.photoimg, command=self.go_to_home, cursor="hand2")
+        b1.place(x=10, y=0, width=70, height=70)
+
+        self.home_button = Button(self.title_lbl, text=get_text("home"), command=self.go_to_home, cursor="hand2", font=("times new roman", 13, "bold"), bg="lavender", fg="black")
+        self.home_button.place(x=10, y=70, width=70, height=30)
+
 
         img_top = Image.open(r"photo\1_RZc0lk7gkMGXv6nEOwc7Ng.jpg")
         img_top = img_top.resize((1530, 325), Image.FIXED)
         self.photoimg_top = ImageTk.PhotoImage(img_top)
 
         top_img_label = Label(self.root, image=self.photoimg_top)
-        top_img_label.place(x=0, y=55, width=650, height=700)
+        top_img_label.place(x=0, y=100, width=650, height=700)
 
         # Left image
         img_left = Image.open(r"photo\2401770.jpg")
@@ -33,15 +50,15 @@ class Face_recognition:
         self.photoimg_left = ImageTk.PhotoImage(img_left)
 
         left_img_label = Label(self.root, image=self.photoimg_left)
-        left_img_label.place(x=650, y=55, width=950, height=700)
+        left_img_label.place(x=650, y=100, width=950, height=700)
 
         # Button frame
-        b1_1=Button(left_img_label, text="Face Recognition", command=self.face_recognition,  font=("times new roman", 15, "bold"), bg="blue", fg="white")
-        b1_1.place(x=350, y=600, width=200, height=45)
+        self.b1_1=Button(left_img_label, text=get_text("face_recognition"), command=self.face_recognition,  font=("times new roman", 15, "bold"), bg="blue", fg="white")
+        self.b1_1.place(x=350, y=550, width=200, height=45)
 
         #exit button
-        b1_2=Button(left_img_label, text="Exit", command=self.root.destroy,  font=("times new roman", 15, "bold"), bg="blue", fg="white")
-        b1_2.place(x=350, y=650, width=200, height=45)
+        self.b1_2=Button(left_img_label, text=get_text("exit"), command=self.root.destroy,  font=("times new roman", 15, "bold"), bg="blue", fg="white")
+        self.b1_2.place(x=350, y=600, width=200, height=45)
 
     #attendance button
     def attendance(self,i,r,d,n):
@@ -130,6 +147,35 @@ class Face_recognition:
     # Exit function
     def exit(self):
         self.root.destroy()
+
+    def change_language(self, event):
+        selected_lang = self.language_combo.get()
+        if selected_lang in self.language_map:
+            set_language(self.language_map[selected_lang])
+            self.update_texts()
+
+    def update_texts(self):
+        # Placeholder for actual text update logic
+        self.title_lbl.config(text=get_text("face_recognition"))
+        self.home_button.config(text=get_text("home"))
+        self.b1_1.config(text=get_text("face_recognition"))
+        self.b1_2.config(text=get_text("exit"))
+
+
+    def go_to_home(self):
+        """This method will close the current Developer window and open the main application window."""
+        self.root.destroy()  # Close the current Developer window
+        self.open_main_window()  # Open the main application window
+
+    def open_main_window(self):
+        """Opens the main window (main.py)"""
+        try:
+            import main  # Import your main window module here
+            main.main()  # Assuming `main.py` has a `main()` function to start the app
+        except ImportError:
+            logging.error("Error importing the main window module. Ensure 'main.py' exists.")
+
+
 
 if __name__ == "__main__":
     root = Tk()
