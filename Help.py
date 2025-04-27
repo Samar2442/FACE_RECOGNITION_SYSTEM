@@ -15,6 +15,17 @@ class Help:
         self.root.title("Face Recognition System")
 
         # Title
+        title_label = Label(self.root, text="Help Desk", font=("times new roman", 35, "bold"), bg="grey", fg="blue")
+        title_label.place(x=0, y=0, width=1530, height=60)
+
+        # Background Image
+        bg_image = Image.open(r"photo\man-working-call-center-office.jpg")
+        bg_image = bg_image.resize((1530, 790), Image.LANCZOS)
+        self.photo_bg = ImageTk.PhotoImage(bg_image)
+
+        background_label = Label(self.root, image=self.photo_bg)
+        background_label.place(x=0, y=60, width=1530, height=790)
+
         title_label = Label(self.root, text=get_text("help_desk"), font=("times new roman", 35, "bold"), bg="grey", fg="blue")
         title_label.place(x=0, y=0, width=1530, height=100)
 
@@ -56,6 +67,7 @@ class Help:
     def call(self):
         messagebox.showinfo("Call", "Please call: 12345678910 from your mobile phone.")
 
+
     
     def change_language(self, event):
         selected_lang = self.language_combo.get()
@@ -88,3 +100,6 @@ if __name__ == "__main__":
     root = Tk()
     obj = Help(root)
     root.mainloop()
+    
+    
+  
